@@ -20,9 +20,11 @@ angular.module('circledistributionApp')
         }
 
         var get_points= function(maxpoints,radius, x0,y0){
-            var pts={coords:[],
+            var pts={
+                coords:[],
                 xs:[],
-                ys:[]};
+                ys:[]
+            };
             for (var i=0;i< maxpoints;i++){
                 var p = get_point(radius, x0,y0);
                 pts.xs.push(p.x);
