@@ -1,27 +1,43 @@
 <div class="hero-unit" ng-controller="MainCtrl">
-  <h1>Points from the circle</h1>
-  <p class="lead">random points from a circle of radius: </p>
+    <h1>Points from the circle</h1>
+    <p class="lead">random points from a circle of radius: </p>
     <div class="row-fluid">
         <div class='content col-sm-6' id='d3content'>
-        <!-- /the chart goes here -->
+            <!-- /the chart goes here -->
         </div>
 
-    <form action="">
 
-  <div class="form-group col-sm-6">
-  <label for="radius">radius</label>
-  <input class="form-control" type="number" ng-model="radius" id="radius"/>
-  <label for="maxpoints">points</label>
-  <input type="number" class="form-control" ng-model="maxpoints" id="maxpoints"/>
-  <button class="btn" ng-click="refresh()">refresh</button>
-  </div>
-  </form>
-  </div>
-  <div class="row-fluid">
-  <div class="col-sm-6">
+        <div class="col-sm-6">
+            <form action="">
+                <div class="form-group ">
+                    <label for="radius">radius</label>
+                    <input class="form-control" type="number" ng-model="radius" id="radius" focus/>
+                    <label for="maxpoints">points</label>
+                    <input type="number" class="form-control" ng-model="maxpoints" id="maxpoints"/>
+                    <button type="button" class="btn btn-default" ng-click="refresh()">refresh</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="row-fluid">
+        <div class="col-sm-6">
+            <p class="lead">Generate one or more</p>
+            <p> Random points inside a circle of radius r around 0,0:
+                the problem is easily solved thinking in radial coordinates:
+                we want a point with a random distance from the center, "r", and a random angle "t".
+                Since the surface of a circle goes with the square power of the radius,
+                and we want uniform coverage of such surface (i.e. uniformly distributed points)
+                the random radius values have to be sampled with square root weight.
+            </p>
+            <p><a href="pycircle.py">download simple script in python</a></p>
+
+        </div>
+
+        <div class="col-sm-6">
   <pre>
   <ul ng-repeat="point in points.coords"><li>{{point.x}},{{point.y}}</li></ul>
   </pre>
-  </div>
-  </div>
+        </div>
+    </div>
 </div>

@@ -3,3 +3,14 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
 }
+ul{
+    list-style-type: none;
+}
+pre{
+    width:100%;
+    height:200px;
+    overflow:scroll;
+}
+.axis path {
+    fill:  none;
+}

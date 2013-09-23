@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('circledistributionApp')
-  .controller('MainCtrl', function ($scope) {
-
+    .controller('MainCtrl', function ($scope) {
         var get_point = function(radius){
             var r=radius*Math.sqrt(Math.random())
             var theta=Math.PI*2*Math.random()
@@ -30,7 +29,7 @@ angular.module('circledistributionApp')
 
 
 // size and margins for the chart
-        var margin = {top: 20, right: 20, bottom: 20, left: 20}
+        var margin = {top: 20, right: 20, bottom: 20, left: 40}
             , width = 400 - margin.left - margin.right
             , height = 400 - margin.top - margin.bottom;
 
@@ -69,7 +68,7 @@ angular.module('circledistributionApp')
 
         main.append('g')
             .attr('transform', 'translate(0,' + height + ')')
-            .attr('class', 'main axis date')
+            .attr('class', 'main axis')
             .call(xAxis);
 
 // draw the y axis
@@ -79,7 +78,7 @@ angular.module('circledistributionApp')
 
         main.append('g')
             .attr('transform', 'translate(0,0)')
-            .attr('class', 'main axis date')
+            .attr('class', 'main axis')
             .call(yAxis);
 
 // draw the graph object
