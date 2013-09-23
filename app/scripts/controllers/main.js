@@ -2,18 +2,29 @@
 
 angular.module('circledistributionApp')
     .controller('MainCtrl', function ($scope) {
-        var get_point = function(radius){
+        //init scope variables
+        if (!$scope.radius)
+            $scope.radius =1;
+        if (!$scope.maxpoints)
+            $scope.maxpoints =1;
+        if (!$scope.x0)
+            $scope.x0 =0;
+        if (!$scope.y0)
+            $scope.y0 =0;
+
+        var get_point = function(radius, x0,y0){
+            // return a point within a circle of radius r
             var r=radius*Math.sqrt(Math.random())
             var theta=Math.PI*2*Math.random()
-            return {x:r*Math.sin(theta),y:r*Math.cos(theta)}
+            return {x:r*Math.sin(theta)+x0,y:r*Math.cos(theta)+y0}
         }
 
-        var get_points= function(maxpoints,radius){
+        var get_points= function(maxpoints,radius, x0,y0){
             var pts={coords:[],
                      xs:[],
                      ys:[]};
             for (var i=0;i< maxpoints;i++){
-                var p = get_point(radius);
+                var p = get_point(radius, x0,y0);
                 pts.xs.push(p.x);
                 pts.ys.push(p.y);
                 pts.coords.push(p);
@@ -23,15 +34,15 @@ angular.module('circledistributionApp')
 
 
         $scope.refresh = function(){
-        $scope.points=get_points($scope.maxpoints,$scope.radius)
+        $scope.points=get_points($scope.maxpoints,$scope.radius, $scope.x0, $scope.y0)
         var xdata = $scope.points.xs;
         var ydata = $scope.points.ys;
 
 
 // size and margins for the chart
         var margin = {top: 20, right: 20, bottom: 20, left: 40}
-            , width = 400 - margin.left - margin.right
-            , height = 400 - margin.top - margin.bottom;
+            , width = 300 - margin.left - margin.right
+            , height = 300 - margin.top - margin.bottom;
 
 // x and y scales, I've used linear here but there are other options
 // the scales translate data values to pixel values for you
