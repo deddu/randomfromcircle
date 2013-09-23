@@ -1,15 +1,27 @@
 <div class="hero-unit" ng-controller="MainCtrl">
-  <h1>Hello!</h1>
-  <p>sit back and enjoy some random points inside a circle of radius: </p>
-
-    <div class='content' id='d3content'>
+  <h1>Points from the circle</h1>
+  <p class="lead">random points from a circle of radius: </p>
+    <div class="row-fluid">
+        <div class='content col-sm-6' id='d3content'>
         <!-- /the chart goes here -->
-    </div>
+        </div>
 
-  <input type="number" ng-model="radius" />
-  <input type="number" ng-model="maxpoints" />
-  <input type="number" ng-model="origin.x" />
-  <input type="number" ng-model="origin.y" />
-  <button ng-click="refresh()">refresh</button>
+    <form action="">
+
+  <div class="form-group col-sm-6">
+  <label for="radius">radius</label>
+  <input class="form-control" type="number" ng-model="radius" id="radius"/>
+  <label for="maxpoints">points</label>
+  <input type="number" class="form-control" ng-model="maxpoints" id="maxpoints"/>
+  <button class="btn" ng-click="refresh()">refresh</button>
+  </div>
+  </form>
+  </div>
+  <div class="row-fluid">
+  <div class="col-sm-6">
+  <pre>
   <ul ng-repeat="point in points.coords"><li>{{point.x}},{{point.y}}</li></ul>
+  </pre>
+  </div>
+  </div>
 </div>
