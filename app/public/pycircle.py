@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 def random_inside_circle(radius, x0=0, y0=0):
     '''
     return a random point inside a circle of radius r around x0 y0:
