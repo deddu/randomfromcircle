@@ -3,21 +3,18 @@
 angular.module('circledistributionApp')
     .controller('MainCtrl', function ($scope) {
         //init scope variables
-        if (!$scope.radius)
-            $scope.radius =1;
-        if (!$scope.maxpoints)
-            $scope.maxpoints =1;
-        if (!$scope.x0)
-            $scope.x0 =0;
-        if (!$scope.y0)
-            $scope.y0 =0;
+        if (!$scope.radius){$scope.radius =1;}
+        if (!$scope.maxpoints){$scope.maxpoints =1;}
+        if (!$scope.x0){$scope.x0 =0;}
+        if (!$scope.y0){$scope.y0 =0;}
+
 
         var get_point = function(radius, x0,y0){
             // return a point within a circle of radius r
-            var r=radius*Math.sqrt(Math.random())
-            var theta=Math.PI*2*Math.random()
-            return {x:r*Math.sin(theta)+x0,y:r*Math.cos(theta)+y0}
-        }
+            var r=radius*Math.sqrt(Math.random());
+            var theta = Math.PI * 2 * Math.random();
+            return {x:r*Math.sin(theta)+x0,y:r*Math.cos(theta)+y0};
+        };
 
         var get_points= function(maxpoints,radius, x0,y0){
             var pts={
@@ -32,11 +29,12 @@ angular.module('circledistributionApp')
                 pts.coords.push(p);
             }
             return pts;
-        }
+        };
+
         $scope.get_points = get_points;
 
         $scope.refresh = function(){
-            $scope.points=get_points($scope.maxpoints,$scope.radius, $scope.x0, $scope.y0)
+            $scope.points=get_points($scope.maxpoints,$scope.radius, $scope.x0, $scope.y0);
 
             // derived from http://bl.ocks.org/2595950
             var xdata = $scope.points.xs;
@@ -65,14 +63,14 @@ angular.module('circledistributionApp')
                 .append('svg:svg')
                 .attr('width', width + margin.right + margin.left)
                 .attr('height', height + margin.top + margin.bottom)
-                .attr('class', 'chart')
+                .attr('class', 'chart');
 
             // the main object where the chart and axis will be drawn
             var main = chart.append('g')
                 .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
                 .attr('width', width)
                 .attr('height', height)
-                .attr('class', 'main')
+                .attr('class', 'main');
 
             // draw the x axis
             var xAxis = d3.svg.axis()
@@ -103,7 +101,7 @@ angular.module('circledistributionApp')
                 .enter().append("svg:circle")  // create a new circle for each value
                 .attr("cy", function (d) { return y(d); } ) // translate y value to a pixel
                 .attr("cx", function (d,i) { return x(xdata[i]); } ) // translate x value
-                .attr("r", 2) // radius of circle
+                .attr("r", 2); // radius of circle
         }
     });
 
